@@ -62,4 +62,14 @@ const prod = withSentryConfig(
   sentryWebpackPluginOptions,
 )
 
+const moduleExports = {
+  ...config,
+
+  sentry: {
+    hideSourceMaps: true,
+    disableServerWebpackPlugin: false,
+    disableClientWebpackPlugin: false,
+  },
+};
+
 module.exports = IS_DEV ? dev : IS_DOCKER ? docker : prod
