@@ -55,13 +55,6 @@ const base = withPWA(withTM(withBundleAnalyzer(config)))
 
 const dev = base
 const docker = base
-const prod = withSentryConfig(
-  base,
-  // Make sure adding Sentry options is the last code to run before exporting, to
-  // ensure that your source maps include changes from all other Webpack plugins
-  sentryWebpackPluginOptions,
-)
-
 const moduleExports = {
   ...config,
 
@@ -71,5 +64,20 @@ const moduleExports = {
     disableClientWebpackPlugin: false,
   },
 };
+const prod = withSentryConfig(
+  base,
+  // Make sure adding Sentry options is the last code to run before exporting, to
+  // ensure that your source maps include changes from all other Webpack plugins
+  sentryWebpackPluginOptions,
+  moduleExports
+)
 
-module.exports = IS_DEV ? dev : IS_DOCKER ? docker : prod
+
+
+module.exports = withSentryConfig(
+  base,
+  // Make sure adding Sentry options is the last code to run before exporting, to
+  // ensure that your source maps include changes from all other Webpack plugins
+  sentryWebpackPluginOptions,
+  moduleExports
+)
