@@ -235,7 +235,7 @@ function NavigationBar() {
         {readMode ? (
           <ViewActionBar
             env={Env.Mobile}
-            className={clsx(visible || 'hidden')}
+            // className={clsx(visible || 'hidden')}
           />
         ) : (
           <PageActionBar env={Env.Mobile} />
