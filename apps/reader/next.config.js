@@ -44,7 +44,7 @@ const dev = base
 const docker = base
 
 const moduleExports = {
-  ...nextConfig,
+  ...config,
 
   sentry: {
     hideSourceMaps: true,
